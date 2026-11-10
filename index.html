@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shope manager</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+</head>
+
+<body class="flex flex-col p-4 bg-blue-200 gap-7 ">
+    <header class="flex items-center justify-between bg-blue-50  p-6 rounded-2xl ">
+        <h1 class="font-bold text-3xl antialiased not-italic">Shope Manager</h1>
+        <ion-icon name="cart-outline" style="height: 30px ; width: 30px ;"
+            class="flex p-3 bg-blue-400 rounded-2xl "></ion-icon>
+    </header>
+    <main class="flex flex-col bg-blue-50 p-4 rounded-2xl gap-4">
+        <section id="slaycers" class="w-full flex items-center justify-between ">
+            <div class="flex items-center gap-2">
+                <ion-icon name="search-circle-outline" style="height: 50px; width: 50px; "></ion-icon>
+                <input id="search-for-product" type="text" placeholder="search for a product"
+                    class="max-w-1/2 border border-[#444851] rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+            </div>
+            <select
+                class="w-half border border-[#444851] rounded-xl px-3 py-2.5 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"
+                name="slyce by category" id="category">
+                <option value="">Select a category</option>
+                <option value="">Electronic</option>
+                <option value="">Home</option>
+            </select>
+
+
+        </section>
+        <hr class="color-black-900">
+        <section id="products" class="bg-blue-0 grid grid-cols-4 grid-rows gap-4">
+            <div id="product-card"
+                class="w-full flex flex-col bg-indigo-100 gap-4 rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                <img id="product-image" src="bottle.svg" alt="bottle of wowa" class="rounded-xl">
+                <hr class="color-[#000000]-300">
+                <article style="height: 50%; width: 100%;" class="flex flex-col gap-4 overflow-hidden">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 id="product-name" class="font-bold text-2xl ">Bottel</h2>
+                            <span id="category" class="font-bold">electronic</span>
+                        </div>
+                        <span id="price" class="font-bold text-3xl text-amber-400 ">40$</span>
+                    </div>
+                    <div>
+                        <p class="p-2 bg-blue-50 rounded-2xl ">cristino ronaldo bottel he used to drink water in it at
+                            his last match with real madrid </p>
+                    </div>
+                    <div class="flex gap-10 items-center">
+                        <span id="product-Statu" class="flex p-4 bg-green-400 rounded-2xl font-bold ">Available</span>
+                        <button class="flex gap-3 p-4  bg-[#FFD51E] rounded-2xl items-center"><ion-icon name="card-outline"  style="height: 30px; width: 30px;"></ion-icon> Add to cart</button>
+                    </div>
+
+                </article>
+            </div>
+        </section>
+
+    </main>
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
