@@ -51,7 +51,7 @@ function getCategrysByName(data) {
     data.forEach(categ =>{
         console.log(categ.name);
         
-        CategoryBlock.innerHTML = `
+        CategoryBlock.innerHTML += `
             <option value="${categ.name}">${categ.name}</option>
         `
     })
