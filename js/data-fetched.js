@@ -32,10 +32,8 @@ async function fetchApi(url) {
 
 
 async function functionsManager() {
-  const products = await fetchApi(baseUrl+'api/products');
+  const products = await fetchApi(baseUrl + 'api/products');
   displayProductes(products);
-  const categories = await fetchApi(baseUrl+'api/categories');
+  const categories = await fetchApi(baseUrl + 'api/categories');
   getCategrysByName(categories)
 }
-
-functionsManager()
