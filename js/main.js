@@ -1,12 +1,22 @@
+const productsSection = document.getElementById('products');
+const searchBlock = document.getElementById('search-for-product')
+
+
+functionsManager()
+
+
 
 
 function displayProductes(data) {
-    const productsSection = document.getElementById('products');
-    console.log(productsSection);
-    productsSection.innerHTML = '';
+    if (data.lenght === 0) {
+        productsSection.innerHTML = `<p>Product not found !!</p>`
+        return;
+    }
+    else {
+        productsSection.innerHTML = '';
 
-    data.forEach(product => {
-        productsSection.innerHTML += `
+        data.forEach(product => {
+            productsSection.innerHTML += `
             <div id="product-card"
                 class="w-full flex flex-col bg-indigo-100 gap-4 rounded-xl px-3 py-2.5 text-black outline-none ring-2 ring-black-500 hover:ring-black transition" data-id = ${product.id}>
                 <img id="product-image" src="http://localhost:3000${product.image}" alt="${product.name}" class="rounded-xl">
@@ -29,30 +39,34 @@ function displayProductes(data) {
                 </article>
             </div>
         `
-    });
+        });
+    }
 
 }
-
-const stockStatus = document.getElementById('stock-Statu');
-console.log(stockStatus);
 
 function getStockStatus(stock) {
     if (stock > 0) {
         return 'Available'
     }
     else {
-         return 'Sold out'
-    } 
+        return 'Sold out'
+    }
 }
 
 function getCategrysByName(data) {
     const CategoryBlock = document.getElementById('category');
-    console.log(CategoryBlock);
-    data.forEach(categ =>{
-        console.log(categ.name);
-        
-        CategoryBlock.innerHTML = `
-            <option value="${categ.name}">${categ.name}</option>
+    data.forEach(categ => {
+        CategoryBlock.innerHTML += `
+            <option value="${categ.id}">${categ.name}</option>
         `
     })
 }
+
+searchBlock.addEventListener('input', async e => {
+    let searchedValue = searchBlock.value.trim()
+    const searchedProducts = await fetchApi(`${baseUrl}api/products?search=${searchedValue}`);
+    console.log(searchedProducts);
+    displayProductes(searchedProducts)
+})
+
+// displayProductes(data)
