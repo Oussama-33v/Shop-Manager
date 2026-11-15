@@ -1,11 +1,9 @@
 const productsSection = document.getElementById('products');
 const searchBlock = document.getElementById('search-for-product')
+const CategoryBlock = document.getElementById('category');
 
 
 functionsManager()
-
-
-
 
 function displayProductes(data) {
     if (data.length === 0) {
@@ -59,13 +57,13 @@ function getStockStatus(stock) {
 }
 
 function getCategreisByName(data) {
-    const CategoryBlock = document.getElementById('category');
     data.forEach(categ => {
         CategoryBlock.innerHTML += `
             <option value="${categ.id}">${categ.name}</option>
         `
     })
 }
+
 function searchForProductsByName() {
     searchBlock.addEventListener('input', async e => {
         let searchedValue = searchBlock.value.trim()
@@ -76,4 +74,10 @@ function searchForProductsByName() {
 
 }
 
-// displayProductes(data)
+function filterByCategorye() {
+    CategoryBlock.addEventListener('change', async (event) => {
+        let selectedCategory = CategoryBlock.value
+        let products = await fetchApi(`${baseUrl}api/products?categoryId=${selectedCategory}`)
+        displayProductes(products)  
+    })
+}
