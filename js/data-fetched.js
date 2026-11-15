@@ -35,5 +35,6 @@ async function functionsManager() {
   const products = await fetchApi(baseUrl + 'api/products');
   displayProductes(products);
   const categories = await fetchApi(baseUrl + 'api/categories');
-  getCategrysByName(categories)
+  getCategreisByName(categories);
+  searchForProductsByName();
 }
