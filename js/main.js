@@ -1,6 +1,7 @@
 const productsSection = document.getElementById('products');
-const searchBlock = document.getElementById('search-for-product')
-const CategoryBlock = document.getElementById('category');
+const searchBlock = document.getElementById('search-for-product');
+const categoryInput = document.getElementById('category');
+const priceInput = document.getElementById('maxPrice');
 
 
 functionsManager()
@@ -58,7 +59,7 @@ function getStockStatus(stock) {
 
 function getCategreisByName(data) {
     data.forEach(categ => {
-        CategoryBlock.innerHTML += `
+        categoryInput.innerHTML += `
             <option value="${categ.id}">${categ.name}</option>
         `
     })
@@ -75,9 +76,21 @@ function searchForProductsByName() {
 }
 
 function filterByCategorye() {
-    CategoryBlock.addEventListener('change', async (event) => {
-        let selectedCategory = CategoryBlock.value
+    categoryInput.addEventListener('change', async (event) => {
+        let selectedCategory = categoryInput.value
         let products = await fetchApi(`${baseUrl}api/products?categoryId=${selectedCategory}`)
-        displayProductes(products)  
+        displayProductes(products)
+    })
+}
+
+function filterByMaxPrice() {
+    priceInput.addEventListener('input', async (e) => {
+        let maxPrice = priceInput.value.trim()
+        if (maxPrice === "") {
+            priceInput.value = '';
+            return;
+        }
+        let products = await fetchApi(`${baseUrl}api/products?maxPrice=${maxPrice}`);
+        displayProductes(products)
     })
 }
