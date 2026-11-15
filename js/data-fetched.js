@@ -36,5 +36,5 @@ async function functionsManager() {
   displayProductes(products);
   const categories = await fetchApi(baseUrl + 'api/categories');
   getCategreisByName(categories);
-  searchForProductsByName();
+  searchForProductsByName(); 
 }
