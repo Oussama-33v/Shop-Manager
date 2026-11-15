@@ -1,15 +1,18 @@
 const productsSection = document.getElementById('products');
 const searchBlock = document.getElementById('search-for-product')
+const CategoryBlock = document.getElementById('category');
 
 
 functionsManager()
 
-
-
-
 function displayProductes(data) {
-    if (data.lenght === 0) {
-        productsSection.innerHTML = `<p>Product not found !!</p>`
+    if (data.length === 0) {
+        productsSection.innerHTML = `
+            <div class="col-span-full flex flex-col items-center justify-center min-h-[60vh] text-center">
+                <p class="text-xl font-semibold text-slate-800">Product not found</p>
+                <p class="mt-1 text-sm text-slate-500">Try adjusting your search or category filter.</p>
+            </div>        
+        `
         return;
     }
     else {
@@ -53,8 +56,7 @@ function getStockStatus(stock) {
     }
 }
 
-function getCategrysByName(data) {
-    const CategoryBlock = document.getElementById('category');
+function getCategreisByName(data) {
     data.forEach(categ => {
         CategoryBlock.innerHTML += `
             <option value="${categ.id}">${categ.name}</option>
@@ -62,11 +64,20 @@ function getCategrysByName(data) {
     })
 }
 
-searchBlock.addEventListener('input', async e => {
-    let searchedValue = searchBlock.value.trim()
-    const searchedProducts = await fetchApi(`${baseUrl}api/products?search=${searchedValue}`);
-    console.log(searchedProducts);
-    displayProductes(searchedProducts)
-})
+function searchForProductsByName() {
+    searchBlock.addEventListener('input', async e => {
+        let searchedValue = searchBlock.value.trim()
+        const searchedProducts = await fetchApi(`${baseUrl}api/products?search=${searchedValue}`);
+        console.log(searchedProducts);
+        displayProductes(searchedProducts)
+    })
 
-// displayProductes(data)
+}
+
+function filterByCategorye() {
+    CategoryBlock.addEventListener('change', async (event) => {
+        let selectedCategory = CategoryBlock.value
+        let products = await fetchApi(`${baseUrl}api/products?categoryId=${selectedCategory}`)
+        displayProductes(products)  
+    })
+}
