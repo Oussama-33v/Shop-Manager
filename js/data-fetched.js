@@ -37,5 +37,6 @@ async function functionsManager() {
   const categories = await fetchApi(baseUrl + 'api/categories');
   getCategreisByName(categories);
   searchForProductsByName(); 
-  filterByCategorye()
-}
+  filterByCategorye();
+  filterByMaxPrice();
+} 
