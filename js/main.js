@@ -71,7 +71,8 @@ function searchForProductsByName() {
         const searchedProducts = await fetchApi(`${baseUrl}api/products?search=${searchedValue}`);
         console.log(searchedProducts);
         displayProductes(searchedProducts)
-    });
+    })
+
 }
 
 function filterByCategorye() {
