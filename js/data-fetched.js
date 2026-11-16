@@ -19,7 +19,7 @@ const baseUrl = "http://localhost:3000/"
 //   });
 
 
-async function fetchApi(url) {
+async function fetchApi(url, method = 'GET', requestBody = {}) {
   const respons = await fetch(url);
   console.log(respons.status);
   if (!respons.ok) {
