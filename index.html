@@ -49,19 +49,22 @@
         </section>
         <hr class="color-black-900" />
         <section id="products" class="bg-blue-0 grid grid-cols-4 grid-rows gap-4">
+
+
         </section>
         <dialog id="my-cart-dialog"
-            class="w-[70%] bg-[#292c32] text-white border border-[#383b43] rounded-2xl shadow-xl p-0 backdrop:bg-black/60">
+            class="w-[90%] bg-[#292c32] border border-[#383b43] rounded-2xl shadow-xl p-0 backdrop:bg-black/60">
             <section id="selected-products" class="w-full flex flex-col gap-4 bg-[#EAE7DF] p-6 rounded-3xl">
                 <div class="flex items-center justify-between">
                     <h2 class="font-bold text-3xl text-[#2475AF]">My cart</h2>
-                    <button id="close-dialog" onclick="closeCartClick() " class="p-3 rounded-xl bg-[#2475AF] items-center flex text-[#EAE7DF]">
+                    <button id="close-dialog" onclick="closeCartClick() "
+                        class="p-3 rounded-xl bg-[#2475AF] items-center flex text-[#EAE7DF]">
                         <ion-icon name="close-circle-outline" style="height: 30px; width: 30px"></ion-icon>
                     </button>
                 </div>
 
                 <div class="flex gap-5">
-                    <div id="product-card" class="w-[60%] flex flex-col ">
+                    <div id="product-card" class="w-[60%] flex flex-col gap-3 ">
                         <div
                             class="flex h-80 gap-12 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl">
                             <img src="lamp.svg" alt="" style="width: 50%;" class="rounded-2xl" />
@@ -91,9 +94,60 @@
                             </article>
                         </div>
                     </div>
-                    <div action="" class="w-[40%] bg-white h-screen p-4">
-                        <form action=""></form>
-
+                    <div class="w-[40%] bg-white p-4 rounded-2xl flex flex-col gap-10">
+                        <div>
+                            <h2 class="text-4xl text-[#2475AF] font-bold">Chope Manager</h2>
+                            <p>Complet your reservation !</p>
+                        </div>
+                        <form id="reservation-infos" class="flex flex-col gap-4 ">
+                            <div class="flex flex-col gap-2">
+                                <label for="name" class="text-sm font-medium text-black">
+                                    Full name
+                                </label>
+                                <input id="full-name" type="text" required placeholder="Enter full name" name="client"
+                                    class="w-full border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="email" class="text-sm font-medium text-black">
+                                    Email
+                                </label>
+                                <input id="email" type="text" required placeholder="Enter your email" name="email"
+                                    class="w-full border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="phone number" class="text-sm font-medium text-black">
+                                    Phone
+                                </label>
+                                <input id="phone-number" type="number" required placeholder="Enter your Phone number"
+                                    name="phone"
+                                    class="w-full border border-[#444851] rounded-xl px-3 py-2.5  placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="location" class="text-sm font-medium text-black">
+                                    Address
+                                </label>
+                                <input id="client-location" type="text" required placeholder="Enter your address"
+                                    name="phone"
+                                    class="w-full border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="city" class="text-sm font-medium text-black">
+                                    city
+                                </label>
+                                <input id="client-city" type="text" required placeholder="What city you from"
+                                    name="city"
+                                    class="w-full border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="code postal" class="text-sm font-medium text-black">
+                                    Code postal
+                                </label>
+                                <input id="code-postal" type="text" required placeholder="Ex :83300" name="codePostal"
+                                    class="w-full border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
+                            </div>
+                        </form>
+                        <button
+                            class="w-full bg-[#2475AF] text-white border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">Valide</button>
                     </div>
                 </div>
             </section>
