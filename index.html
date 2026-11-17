@@ -11,6 +11,7 @@
             backdrop-filter: blur(15px);
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="flex flex-col p-4 bg-[#EAE7DF] gap-7">
@@ -48,70 +49,6 @@
         </section>
         <hr class="color-black-900" />
         <section id="products" class="bg-blue-0 grid grid-cols-4 grid-rows gap-4">
-            <!-- <div id="product-card"
-                class="w-full flex flex-col bg-indigo-100 gap-4 rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
-                <img id="product-image" src="bottle.svg" alt="bottle of wowa" class="rounded-xl">
-                <hr class="color-[#000000]-300">
-                <article style="height: 50%; width: 100%;" class="flex flex-col gap-4 overflow-hidden">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h2 id="product-name" class="font-bold text-2xl ">Bottel</h2>
-                            <span id="category" class="font-bold">electronic</span>
-                        </div>
-                        <span id="price" class="font-bold text-3xl text-amber-400 ">40$</span>
-                    </div>
-                    <div>
-                        <p class="p-2 bg-blue-50 rounded-2xl ">cristino ronaldo bottel he used to drink water in it at
-                            his last match with real madrid </p>
-                    </div>
-                    <div class="flex gap-10 items-center">
-                        <span id="product-Statu" class="flex p-4 bg-green-400 rounded-2xl font-bold ">Available</span>
-                        <button class="flex gap-3 p-4  bg-[#FFD51E] rounded-2xl items-center"><ion-icon name="card-outline"  style="height: 30px; width: 30px;"></ion-icon> Add to cart</button>
-                    </div>
-
-                </article>
-            </div> -->
-            <!-- <section id="selected-products" class="w-full flex flex-col gap-4 bg-[#EAE7DF] p-6 rounded-3xl">
-                <div class="flex items-center justify-between">
-                    <h2 class="font-bold text-3xl text-[#2475AF]">My cart</h2>
-                    <button id="close-dialog" class="p-3 rounded-xl bg-[#2475AF] items-center flex text-[#EAE7DF]">
-                        <ion-icon name="close-circle-outline" style="height: 30px; width: 30px"></ion-icon>
-                    </button>
-                </div>
-
-                <div class="flex gap-5">
-                    <div id="product-card" class="w-[60%] flex flex-col ">
-                        <div
-                            class="flex h-80 gap-12 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl">
-                            <img src="lamp.svg" alt="" style="width: 50%;" class="rounded-2xl" />
-                            <article style="width: 50%; height: auto" class="flex flex-col justify-between w-full p-5">
-                                <div class="w-full flex justify-between items-center">
-                                    <h2 id="product-title" class="text-4xl font-bold">Lamp</h2>
-                                    <span class="font-bold text-3xl text-[#FED109]">40 $</span>
-                                </div>
-                                <div>
-                                    <p>• Tall and lean, with wind-tangled copper hair, a faint silver scar across his
-                                        left cheek, and sharp, observant amber eyes that constantly track the movement
-                                        of the light.
-                                </div>
-                                <div class="flex flex-col gap-3">
-                                    <label for="quantity" class="font-bold ">Quantity</label>
-                                    <div class="flex items-center gap-4">
-                                        <button class="p-3 bg-white rounded-full"><ion-icon name="remove-outline"
-                                                style="width: 15px; height: 15px"></ion-icon></button>
-                                        <span class="text-2xl font-bold">3</span>
-                                        <button class="p-3 bg-white rounded-full"><ion-icon name="add-outline"
-                                                style="width: px; height: 15px"></ion-icon></button>
-                                    </div>
-                                </div>
-                            </article>
-
-                        </div>
-
-                    </div>
-                    <form action="" class="w-[40%] bg-white h-screen"></form>
-                </div>
-            </section>-->
         </section>
         <dialog id="my-cart-dialog"
             class="w-[70%] bg-[#292c32] text-white border border-[#383b43] rounded-2xl shadow-xl p-0 backdrop:bg-black/60">
