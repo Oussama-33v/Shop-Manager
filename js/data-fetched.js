@@ -20,23 +20,33 @@ const baseUrl = "http://localhost:3000/"
 
 
 async function fetchApi(url, method = 'GET', requestBody = {}) {
-  const respons = await fetch(url);
-  console.log(respons.status);
-  if (!respons.ok) {
-    const problem = await respons.json();
-    return problem.message;
-  }
-  const data = await respons.json();
-  return data
-}
+  try {
+    const respons = await fetch(url);
+    console.log(respons.status);
+    if (!respons.ok) {
+      const problem = await respons.json();
+      throw new Error(problem.message)
+    }
+    const data = await respons.json();
+    return data
+  } catch (error) {
+    Swal.fire({
+      title: 'oops',
+      text: 'Somthing is wrong',
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    })
+    
 
+  }
+}
 
 async function functionsManager() {
   const products = await fetchApi(baseUrl + 'api/products');
   displayProductes(products);
   const categories = await fetchApi(baseUrl + 'api/categories');
   getCategreisByName(categories);
-  searchForProductsByName(); 
+  searchForProductsByName();
   filterByCategorye();
   filterByMaxPrice();
 } 
