@@ -1,44 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shope manager</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <style>
+        dialog::backdrop {
+            backdrop-filter: blur(15px);
+        }
+    </style>
 </head>
 
-<body class="flex flex-col p-4 bg-[#EAE7DF] gap-7 ">
-    <header class="flex items-center justify-between p-3 rounded-2xl ">
+<body class="flex flex-col p-4 bg-[#EAE7DF] gap-7">
+    <header class="flex items-center justify-between p-3 rounded-2xl">
         <h1 class="font-bold text-3xl antialiased not-italic">Shope Manager</h1>
         <div class="flex items-center gap-10">
-            <button id="my-cart" class="flex flex-col items-center">
-                <ion-icon name="cart-outline" style="height: 30px ; width: 30px ;"
-                    class="flex p-2 bg-white rounded-2xl "></ion-icon>
-                <span class="font-bold ">My cart</span>
+            <button id="my-cart" class="flex flex-col items-center" onclick="showCartClick()">
+                <ion-icon name="cart-outline" style="height: 30px; width: 30px"
+                    class="flex p-2 bg-white rounded-2xl"></ion-icon>
+                <span class="font-bold">My cart</span>
             </button>
             <span class="p-2 bg-white flex items-center rounded-2xl gap-3 font-bold">Login / Signe up<ion-icon
-                    name="person-sharp" style="height: 30px; width: 30px;"
+                    name="person-sharp" style="height: 30px; width: 30px"
                     class="p-2 bg-blue-100 rounded-full"></ion-icon></span>
         </div>
     </header>
     <main class="flex flex-col bg-[#EFF0F4] p-4 rounded-2xl gap-4">
         <section id="slaycers" class="w-full flex items-center justify-between gap-10">
-            <!-- <div class="flex size-1/3">
-                <select name="filter-by-statu" id="statu-filter"
-                    class=" size-1/2  w-full border border-[#444851] rounded-xl px-3 py-2.5 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
-                    <option value="available">Available</option>
-                    <option value="sold-out">Sold out</option>
-                </select>
-            </div> -->
-            <div class="maxPrice flex flex-col  gap-3">
+            <div class="maxPrice flex flex-col gap-3">
                 <input type="number" min="0" id="maxPrice" name="maxPrice" placeholder="any price"
-                    class="w-full size-1/3 border border-[#444851] rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                    class="w-full size-1/3 border border-[#444851] rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
             </div>
             <div class="flex items-center gap-2 size-1/3">
                 <ion-icon name="search-sharp" style="height: 40px; width: 40px"></ion-icon>
                 <input id="search-for-product" type="text" placeholder="search for a product"
-                    class="w-full size-1/3  border border-[#444851] rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                    class="w-full size-1/3 border border-[#444851] rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
             </div>
             <select
                 class="size-1/3 border border-[#444851] rounded-xl px-3 py-2.5 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"
@@ -47,10 +45,8 @@
                 <!-- <option value="">Electronic</option>
                 <option value="">Home</option> -->
             </select>
-
-
         </section>
-        <hr class="color-black-900">
+        <hr class="color-black-900" />
         <section id="products" class="bg-blue-0 grid grid-cols-4 grid-rows gap-4">
             <!-- <div id="product-card"
                 class="w-full flex flex-col bg-indigo-100 gap-4 rounded-xl px-3 py-2.5 text-black outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
@@ -75,11 +71,108 @@
 
                 </article>
             </div> -->
-        </section>
+            <!-- <section id="selected-products" class="w-full flex flex-col gap-4 bg-[#EAE7DF] p-6 rounded-3xl">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-bold text-3xl text-[#2475AF]">My cart</h2>
+                    <button id="close-dialog" class="p-3 rounded-xl bg-[#2475AF] items-center flex text-[#EAE7DF]">
+                        <ion-icon name="close-circle-outline" style="height: 30px; width: 30px"></ion-icon>
+                    </button>
+                </div>
 
+                <div class="flex gap-5">
+                    <div id="product-card" class="w-[60%] flex flex-col ">
+                        <div
+                            class="flex h-80 gap-12 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl">
+                            <img src="lamp.svg" alt="" style="width: 50%;" class="rounded-2xl" />
+                            <article style="width: 50%; height: auto" class="flex flex-col justify-between w-full p-5">
+                                <div class="w-full flex justify-between items-center">
+                                    <h2 id="product-title" class="text-4xl font-bold">Lamp</h2>
+                                    <span class="font-bold text-3xl text-[#FED109]">40 $</span>
+                                </div>
+                                <div>
+                                    <p>• Tall and lean, with wind-tangled copper hair, a faint silver scar across his
+                                        left cheek, and sharp, observant amber eyes that constantly track the movement
+                                        of the light.
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <label for="quantity" class="font-bold ">Quantity</label>
+                                    <div class="flex items-center gap-4">
+                                        <button class="p-3 bg-white rounded-full"><ion-icon name="remove-outline"
+                                                style="width: 15px; height: 15px"></ion-icon></button>
+                                        <span class="text-2xl font-bold">3</span>
+                                        <button class="p-3 bg-white rounded-full"><ion-icon name="add-outline"
+                                                style="width: px; height: 15px"></ion-icon></button>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+
+                    </div>
+                    <form action="" class="w-[40%] bg-white h-screen"></form>
+                </div>
+            </section>-->
+        </section>
+        <dialog id="my-cart-dialog"
+            class="w-[70%] bg-[#292c32] text-white border border-[#383b43] rounded-2xl shadow-xl p-0 backdrop:bg-black/60">
+            <section id="selected-products" class="w-full flex flex-col gap-4 bg-[#EAE7DF] p-6 rounded-3xl">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-bold text-3xl text-[#2475AF]">My cart</h2>
+                    <button id="close-dialog" onclick="closeCartClick() " class="p-3 rounded-xl bg-[#2475AF] items-center flex text-[#EAE7DF]">
+                        <ion-icon name="close-circle-outline" style="height: 30px; width: 30px"></ion-icon>
+                    </button>
+                </div>
+
+                <div class="flex gap-5">
+                    <div id="product-card" class="w-[60%] flex flex-col ">
+                        <div
+                            class="flex h-80 gap-12 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl">
+                            <img src="lamp.svg" alt="" style="width: 50%;" class="rounded-2xl" />
+                            <article style="width: 50%; height: auto" class="flex flex-col justify-between w-full p-5">
+                                <div class="w-full flex justify-between items-center">
+                                    <h2 id="product-title" class="text-4xl font-bold">Lamp</h2>
+                                    <span class="font-bold text-3xl text-[#FED109]">40 $</span>
+                                </div>
+                                <div>
+                                    <p>• Tall and lean, with wind-tangled copper hair, a faint silver scar across
+                                        his
+                                        left cheek, and sharp, observant amber eyes that constantly track the
+                                        movement
+                                        of the light.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <label for="quantity" class="font-bold ">Quantity</label>
+                                    <div class="flex items-center gap-4">
+                                        <button class="p-3 bg-white rounded-full"><ion-icon name="remove-outline"
+                                                style="width: 15px; height: 15px"></ion-icon></button>
+                                        <span class="text-2xl font-bold">3</span>
+                                        <button class="p-3 bg-white rounded-full"><ion-icon name="add-outline"
+                                                style="width: px; height: 15px"></ion-icon></button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div action="" class="w-[40%] bg-white h-screen p-4">
+                        <form action=""></form>
+
+                    </div>
+                </div>
+            </section>
+        </dialog>
     </main>
     <script src="js/data-fetched.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        const myCartDialog = document.getElementById("my-cart-dialog");
+        function showCartClick() {
+            myCartDialog.showModal();
+        }
+        function closeCartClick() {
+            myCartDialog.close();
+        }
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </body>
