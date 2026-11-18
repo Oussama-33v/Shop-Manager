@@ -54,7 +54,6 @@ productsSection.addEventListener('click', (e) => {
     if (e.target.classList.contains("add-to-cart-btn")) {
         const productId = e.target.dataset.id;
         addProductToCart(productId);
-        displayMyCart(myCart);
 
     }
 });
@@ -119,12 +118,20 @@ async function addProductToCart(productId) {
         product.quantity = 1;
         myCart.push(product)
     }
-    console.log(myCart);
+    displayMyCart(myCart);
 
 }
 
 function displayMyCart(data) {
-
+    if (data.length == 0) {
+        cartProducts.innerHTML = `
+            <div class="col-span-full flex flex-col items-center justify-center min-h-[60vh] text-center">
+                <p class="text-xl font-semibold text-slate-800">Product not found</p>
+                <p class="mt-1 text-sm text-slate-500">No orders yet.</p>
+            </div>        
+        `
+        return;
+    }
     cartProducts.innerHTML = ''
     data.forEach(product => {
         cartProducts.innerHTML += `
