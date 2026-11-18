@@ -36,8 +36,6 @@ async function fetchApi(url, method = 'GET', requestBody = {}) {
       icon: 'error',
       confirmButtonText: 'Ok'
     })
-    
-
   }
 }
 
