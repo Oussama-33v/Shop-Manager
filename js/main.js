@@ -2,7 +2,7 @@ const productsSection = document.querySelector('#products');
 const searchBlock = document.getElementById('search-for-product');
 const categoryInput = document.getElementById('category');
 const priceInput = document.getElementById('maxPrice');
-const cartProducts = document.querySelector('product-card');
+const cartProducts = document.querySelector('#product-card');
 
 const myCart = [];
 
@@ -53,11 +53,10 @@ function displayProductes(data) {
 productsSection.addEventListener('click', (e) => {
     if (e.target.classList.contains("add-to-cart-btn")) {
         const productId = e.target.dataset.id;
-        console.log(productId);
+        addProductToCart(productId);
+        displayMyCart(myCart);
 
-        addProductToCart(productId)
     }
-    else console.log("non");
 });
 
 function getStockStatus(stock) {
@@ -125,33 +124,20 @@ async function addProductToCart(productId) {
 }
 
 function displayMyCart(data) {
-    //     // if (data.length == 0) {
-    //     //     cartProducts.innerHTML = `
-    //     //         <div class="col-span-full flex flex-col items-center justify-center min-h-[60vh] text-center">
-    //     //             <p class="text-xl font-semibold text-slate-800">Product not found</p>
-    //     //             <p class="mt-1 text-sm text-slate-500">No product in the cart</p>
-    //     //         </div>        
-    //     //     `
-    //     //     return;
-    //     // }
-    // else {
-        cartProducts.innerHTML = ''
-        data.forEach(product => {
-            cartProducts.innerHTML += `
+
+    cartProducts.innerHTML = ''
+    data.forEach(product => {
+        cartProducts.innerHTML += `
                 <li
                             class="flex h-80 gap-12 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl">
-                            <img src="lamp.svg" alt="" style="width: 50%;" class="rounded-2xl" />
+                            <img src="http://localhost:3000${product.image}" alt="${product.name}" style="width: 50%;" class="rounded-2xl" />
                             <article style="width: 50%; height: auto" class="flex flex-col justify-between w-full p-5">
                                 <div class="w-full flex justify-between items-center">
-                                    <h2 id="product-title" class="text-4xl font-bold">Lamp</h2>
-                                    <span class="font-bold text-3xl text-[#FED109]">40 $</span>
+                                    <h2 id="product-title" class="text-4xl font-bold">${product.name}</h2>
+                                    <span class="font-bold text-3xl text-[#FED109]">${product.price}</span>
                                 </div>
                                 <div>
-                                    <p>• Tall and lean, with wind-tangled copper hair, a faint silver scar across
-                                        his
-                                        left cheek, and sharp, observant amber eyes that constantly track the
-                                        movement
-                                        of the light.
+                                    <p>•${product.description}
                                     </p>
                                 </div>
                                 <div class="flex flex-col gap-3">
@@ -159,7 +145,7 @@ function displayMyCart(data) {
                                     <div class="flex items-center gap-4">
                                         <button class="p-3 bg-white rounded-full"><ion-icon name="remove-outline"
                                                 style="width: 15px; height: 15px"></ion-icon></button>
-                                        <span class="text-2xl font-bold">3</span>
+                                        <span class="text-2xl font-bold">${product.quantity}</span>
                                         <button class="p-3 bg-white rounded-full"><ion-icon name="add-outline"
                                                 style="width: px; height: 15px"></ion-icon></button>
                                     </div>
@@ -167,7 +153,5 @@ function displayMyCart(data) {
                             </article>
                 </li>
             `
-        })
-    }
-// }
-  displayMyCart(myCart);
+    })
+}
