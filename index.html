@@ -115,7 +115,7 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="phone number" class="text-sm font-medium text-black">
-                                    Phone
+                                    Phone (Optional)
                                 </label>
                                 <input id="phone-number" type="number" required placeholder="Enter your Phone number"
                                     name="phone"
@@ -139,13 +139,13 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="code postal" class="text-sm font-medium text-black">
-                                    Code postal
+                                    Code postal (Optional)
                                 </label>
                                 <input id="code-postal" type="text" required placeholder="Ex :83300" name="codePostal"
                                     class="w-full border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" />
                             </div>
                         </form>
-                        <button
+                        <button id="reservation-validation-btn"
                             class="w-full bg-[#2475AF] text-white border border-[#444851] rounded-xl px-3 py-2.5 placeholder-gray-500 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">Valide</button>
                     </div>
                 </div>
@@ -158,6 +158,7 @@
         const myCartDialog = document.getElementById("my-cart-dialog");
         function showCartClick() {
             myCartDialog.showModal();
+            displayMyCart(myCart)
         }
         function closeCartClick() {
             myCartDialog.close();
