@@ -4,6 +4,17 @@ const categoryInput = document.getElementById('category');
 const priceInput = document.getElementById('maxPrice');
 const cartProducts = document.querySelector('#product-card');
 
+const fullNameInput = document.getElementById('full-name');
+const emailInput = document.getElementById('email');
+const phoneNumberInput = document.getElementById('phone-number');
+const clientLocationInput = document.getElementById('client-location');
+const clientCityInput = document.getElementById('client-city');
+const codePostalInput = document.getElementById('code-postal');
+const formValidationBtn = document.getElementById('reservation-validation-btn');
+
+
+
+
 const myCart = [];
 
 functionsManager()
@@ -46,7 +57,6 @@ function displayProductes(data) {
             `
         });
     };
-    // AELtoReservBtns(reservProductBtn);
 }
 
 function getStockStatus(stock) {
@@ -103,6 +113,7 @@ function filterByMaxPrice() {
 productsSection.addEventListener('click', (e) => {
     if (e.target.classList.contains("add-to-cart-btn")) {
         const productId = e.target.dataset.id;
+        addSweetAlertTobtn();
         addProductToCart(productId);
 
     }
@@ -127,8 +138,8 @@ function displayMyCart(data) {
     if (data.length == 0) {
         cartProducts.innerHTML = `
             <div class="col-span-full flex flex-col items-center justify-center min-h-[60vh] text-center">
-                <p class="text-xl font-semibold text-slate-800">Product not found</p>
-                <p class="mt-1 text-sm text-slate-500">No orders yet.</p>
+                <p class="text-xl font-semibold text-slate-800">Empty cart</p>
+                <p class="mt-1 text-sm text-slate-500">L'ets make some reservations.</p>
             </div>        
         `
         return;
@@ -162,4 +173,12 @@ function displayMyCart(data) {
             </li>
         `
     })
+}
+
+function addSweetAlertTobtn() {
+    Swal.fire({
+        title: "Added",
+        text: "Product added to cart succass",
+        icon: "success"
+    });
 }
