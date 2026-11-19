@@ -113,10 +113,11 @@ function filterByMaxPrice() {
 productsSection.addEventListener('click', (e) => {
     if (e.target.classList.contains("add-to-cart-btn")) {
         const productId = e.target.dataset.id;
-        addSweetAlertTobtn();
+        seccussfullAddToCart();
         addProductToCart(productId);
-
+        calculatePriceTotal(myCart);
     }
+    return;
 });
 
 async function addProductToCart(productId) {
@@ -148,9 +149,9 @@ function displayMyCart(data) {
     data.forEach(product => {
         cartProducts.innerHTML += `
             <li
-                class="flex h-80 gap-12 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl">
-                <img src="http://localhost:3000${product.image}" alt="${product.name}" style="width: 50%;" class="rounded-2xl" />
-                <article style="width: 50%; height: auto" class="flex flex-col justify-between w-full p-5">
+                class="flex p-3 h-80 gap-8 text-[#2475AF] bg-gradient-to-r from-[#EAE7DF] to-[#C6DCF2] rounded-2xl" data-id = "${product.id}">
+                <img src="http://localhost:3000${product.image}" alt="${product.name}" class="flex rounded-2xl" style="width: 50% ">
+                <article style="width: 50%; height: auto" class="flex flex-col justify-between w-full p-5 bg-[#EAE7DF] rounded-2xl">
                     <div class="w-full flex justify-between items-center">
                         <h2 id="product-title" class="text-4xl font-bold">${product.name}</h2>
                         <span class="font-bold text-3xl text-[#FED109]">${product.price}</span>
@@ -159,26 +160,40 @@ function displayMyCart(data) {
                         <p>•${product.description}
                         </p>
                     </div>
-                    <div class="flex flex-col gap-3">
-                        <label for="quantity" class="font-bold ">Quantity</label>
-                        <div class="flex items-center gap-4">
-                            <button class="p-3 bg-white rounded-full"><ion-icon name="remove-outline"
-                                    style="width: 15px; height: 15px"></ion-icon></button>
-                            <span class="text-2xl font-bold">${product.quantity}</span>
-                            <button class="p-3 bg-white rounded-full"><ion-icon name="add-outline"
-                                    style="width: px; height: 15px"></ion-icon></button>
+                    <div class = "flex justify-between items-center">
+                        <div class="flex flex-col gap-3">
+                            <label for="quantity" class="font-bold ">Quantity</label>
+                            <div class="flex items-center gap-4">
+                                <button class="p-3 bg-white rounded-full"><ion-icon name="remove-outline"
+                                        style="width: 15px; height: 15px"></ion-icon></button>
+                                <span class="text-2xl font-bold">${product.quantity}</span>
+                                <button class="p-3 bg-white rounded-full"><ion-icon name="add-outline"
+                                        style="width: px; height: 15px"></ion-icon></button>
+                            </div>
                         </div>
+                        <span class = "font-bold text-xl texte text-[#FED109] p-2 bg-[#2475AF] rounded-3xl">Total : ${calculatePriceTotal(product.quantity, product.price)} $</span>
                     </div>
+                    
                 </article>
             </li>
         `
     })
 }
 
-function addSweetAlertTobtn() {
+function seccussfullAddToCart() {
     Swal.fire({
         title: "Added",
         text: "Product added to cart succass",
         icon: "success"
     });
+}
+
+function calculatePriceTotal(quantity, price) {
+    let total = 1;
+    if (quantity > 1) {
+        total = price * quantity;
+    } else {
+        total = price
+    }
+    return total
 }
